@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    anita.redis:
+        container_name: anita-redis
+    image: "redis:alpine"
+    env_file:
+        - ./.env
+    command: redis-server
+
+    restart: unless-stopped
+    networks:
+        - anita-network
+        
+networks:
+    anita-network:
+        external: true
